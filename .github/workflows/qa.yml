@@ -37,7 +37,7 @@ jobs:
 
 
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v23
+        uses: DavidAnson/markdownlint-cli2-action@v24
 
       - name: Lint reStructuredText (doc8)
         run: |
