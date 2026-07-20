@@ -4,7 +4,6 @@
 [![Python](https://img.shields.io/pypi/pyversions/pyfwf.svg)](https://pypi.org/project/pyfwf/)
 [![QA](https://github.com/kelsoncm/python-pyfwf/actions/workflows/qa.yml/badge.svg)](https://github.com/kelsoncm/python-pyfwf/actions/workflows/qa.yml)
 [![Coverage](https://codecov.io/gh/kelsoncm/python-pyfwf/branch/main/graph/badge.svg)](https://codecov.io/gh/kelsoncm/python-pyfwf)
-[![Publish](https://github.com/kelsoncm/python-pyfwf/actions/workflows/publish.yml/badge.svg)](https://github.com/kelsoncm/python-pyfwf/actions/workflows/publish.yml)
 [![Docs](https://github.com/kelsoncm/python-pyfwf/actions/workflows/docs.yml/badge.svg)](https://kelsoncm.github.io/python-pyfwf/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
