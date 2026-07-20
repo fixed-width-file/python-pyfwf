@@ -50,14 +50,14 @@ def ensure_compliance_cases():
         urllib.request.urlretrieve(zip_url, zip_path)
         with zipfile.ZipFile(zip_path, "r") as zip_ref:
             zip_ref.extractall(COMPLIANCE_DIR)
-        
+
         extracted_root = COMPLIANCE_DIR / "fwf-compliance-tests-main"
         if extracted_root.exists():
             if (extracted_root / "cases").exists():
                 shutil.copytree(extracted_root / "cases", COMPLIANCE_DIR / "cases", dirs_exist_ok=True)
             shutil.copy2(extracted_root / "manifest.json", COMPLIANCE_DIR / "manifest.json")
             shutil.rmtree(extracted_root)
-        
+
         if zip_path.exists():
             zip_path.unlink()
     except Exception as e:
@@ -154,13 +154,10 @@ class TestFWFCompliance(TestCase):
                 expected_data = json.load(f)
 
             file_descriptor = build_file_descriptor(desc_data)
-            
+
             # Format input lines so each line has exact line_size + \n
             raw_lines = input_content.replace("\r\n", "\n").splitlines()
-            formatted_lines = [
-                line.ljust(file_descriptor.line_size) + "\n"
-                for line in raw_lines
-            ]
+            formatted_lines = [line.ljust(file_descriptor.line_size) + "\n" for line in raw_lines]
 
             reader = Reader(formatted_lines, file_descriptor, newline="\n")
 
