@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.14
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v5
         with:
           python-version: "3.14"
 
@@ -38,7 +38,7 @@ jobs:
           black . --check
 
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v24
+        uses: DavidAnson/markdownlint-cli2-action@v19
 
       - name: Lint reStructuredText (doc8)
         run: |
@@ -62,10 +62,10 @@ jobs:
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -88,7 +88,7 @@ jobs:
           pytest-coverage-gate --coverage-xml=coverage.xml --baseline=.coverage-baseline
 
       - name: Upload coverage artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-reports-py${{ matrix.python-version }}
           path: coverage.xml
@@ -96,7 +96,7 @@ jobs:
 
       - name: Upload coverage to Codecov
         if: github.event_name == 'push' || github.event_name == 'schedule'
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@v5
         with:
           use_oidc: true
           files: coverage.xml
@@ -113,10 +113,10 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
