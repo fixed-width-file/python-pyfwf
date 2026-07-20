@@ -3,14 +3,14 @@
 [![License](https://img.shields.io/badge/License-MIT-lemon.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/pypi/pyversions/pyfwf.svg)](https://pypi.org/project/pyfwf/)
 [![FWF Compliance](https://img.shields.io/badge/FWF_Compliance-5%2F5_cases_passed-brightgreen?logo=github)](https://github.com/fixed-width-file/fwf-compliance-tests)
-[![QA](https://github.com/kelsoncm/python-pyfwf/actions/workflows/qa.yml/badge.svg)](https://github.com/kelsoncm/python-pyfwf/actions/workflows/qa.yml)
-[![Coverage](https://codecov.io/gh/kelsoncm/python-pyfwf/branch/main/graph/badge.svg)](https://codecov.io/gh/kelsoncm/python-pyfwf)
-[![Docs](https://github.com/kelsoncm/python-pyfwf/actions/workflows/docs.yml/badge.svg)](https://kelsoncm.github.io/python-pyfwf/)
+[![QA](https://github.com/fixed-width-file/python-pyfwf/actions/workflows/qa.yml/badge.svg)](https://github.com/fixed-width-file/python-pyfwf/actions/workflows/qa.yml)
+[![Coverage](https://codecov.io/gh/fixed-width-file/python-pyfwf/branch/main/graph/badge.svg)](https://codecov.io/gh/fixed-width-file/python-pyfwf)
+[![Docs](https://github.com/fixed-width-file/python-pyfwf/actions/workflows/docs.yml/badge.svg)](https://fixed-width-file.github.io/python-pyfwf/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
 Python library for reading and manipulating **fixed width files (FWF)**.
 
-> See each package's [documentation](https://kelsoncm.github.io/python-pyfwf/)
+> See each package's [documentation](https://fixed-width-file.github.io/python-pyfwf/)
 > for details and usage examples.
 
 This library is necessary because large banks and the Brazilian government use a
