@@ -40,10 +40,11 @@ repos:
       - id: pytest
         name: pytest
         stages: [pre-push]
-        language: system
+        language: python
         entry: pytest --cov=pyfwf --cov-report=xml:coverage.xml --cov-report=term-missing
         pass_filenames: false
         always_run: true
+        additional_dependencies: ['.', 'pytest>=9.0.3', 'pytest-cov>=7.1.0']
       - id: pytest-coverage-gate
         name: pytest-coverage-gate
         stages: [pre-push]

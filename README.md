@@ -88,6 +88,36 @@ with open('data.fwf', 'r') as f:
         print(row)
 ```
 
+## Development & Pre-commit Hooks
+
+This project uses [`pre-commit`](https://pre-commit.com/) to enforce
+code quality, linting, formatting, and unit tests before committing and pushing.
+
+### Installing Git Hooks
+
+To set up the pre-commit and pre-push hooks locally:
+
+```bash
+# Install development dependencies
+pip install -e ".[dev]"
+
+# Install pre-commit and pre-push hooks
+pre-commit install
+pre-commit install --hook-type pre-push
+```
+
+### Running Hooks Manually
+
+You can execute the hooks manually against all files at any time:
+
+```bash
+# Run commit-stage hooks (Black, Ruff, doc8, markdownlint, whitespace)
+pre-commit run --all-files
+
+# Run push-stage hooks (pytest & 100% coverage gate)
+pre-commit run --hook-stage pre-push --all-files
+```
+
 ## Security
 
 Please report vulnerabilities according to [SECURITY.md](SECURITY.md).

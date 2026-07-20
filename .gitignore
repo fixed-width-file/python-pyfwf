@@ -111,4 +111,3 @@ local.properties
 
 # FWF compliance tests (downloaded dynamically)
 tests/fwf-compliance/
-
