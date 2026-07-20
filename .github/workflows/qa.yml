@@ -73,9 +73,13 @@ jobs:
           python -m pip install --upgrade pip uv
           uv pip install --system --upgrade -e ".[dev]"
 
-      - name: Install project dependencies
-        run: pip install -e .
-
+      - name: Fetch compliance test cases
+        run: |
+          mkdir -p tests/fwf-compliance
+          curl -sL "https://github.com/fixed-width-file/fwf-compliance-tests/archive/refs/heads/main.zip" -o compliance.zip
+          unzip -q compliance.zip
+          cp -r fwf-compliance-tests-main/* tests/fwf-compliance/
+          rm -rf compliance.zip fwf-compliance-tests-main
 
       - name: Test with coverage
         run: |

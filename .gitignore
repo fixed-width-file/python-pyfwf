@@ -108,3 +108,7 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+# FWF compliance tests (downloaded dynamically)
+tests/fwf-compliance/
+
