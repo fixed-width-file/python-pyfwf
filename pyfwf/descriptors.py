@@ -27,10 +27,9 @@ __author__ = "Kelson da Costa Medeiros <kelsoncm@gmail.com>"
 from typing import List
 
 from .columns import AbstractColumn
-from .hydrating import Hydrator
 
 
-class RowDescriptor(Hydrator):
+class RowDescriptor:
     def __init__(self, columns: List[AbstractColumn]):
         super(RowDescriptor, self).__init__()
         if not isinstance(columns, list):
@@ -78,7 +77,7 @@ class DetailRowDescriptor(RowDescriptor):
     pass
 
 
-class FileDescriptor(Hydrator):
+class FileDescriptor:
     def __init__(
         self,
         details: List[DetailRowDescriptor],

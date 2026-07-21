@@ -27,15 +27,12 @@ __author__ = "Kelson da Costa Medeiros <kelsoncm@gmail.com>"
 import re
 from datetime import date, datetime, time
 
-from .hydrating import Hydrator
 
-
-class AbstractColumn(Hydrator):
+class AbstractColumn:
     to_str_assertion_types = None
     to_str_assertion_class = None
     to_str_none_pad = None
     to_str_pad_template = None
-    hydrating_args = ["name", "size", "description"]
 
     def __init__(self, _name: str, size: int, description: str = None):
         super(AbstractColumn, self).__init__()
@@ -129,7 +126,6 @@ class PositiveIntegerColumn(AbstractColumn):
 class PositiveDecimalColumn(PositiveIntegerColumn):
     to_str_assertion_types = "positive decimal"
     to_str_assertion_class = float
-    hydrating_args = ["name", "size", "decimals", "description"]
 
     def __init__(self, _name: str, size: int, decimals: int = 2, description: str = None):
         super(PositiveDecimalColumn, self).__init__(_name, size, description)
@@ -163,7 +159,6 @@ class DateTimeColumn(AbstractColumn):
     to_str_assertion_class = datetime
     to_str_none_pad = "0"
     format_num_elements = 5
-    hydrating_args = ["name", "format", "description"]
 
     def __init__(self, _name: str, _format: str = "%d%m%Y%H%M", description: str = None):
         if not isinstance(_name, str):
