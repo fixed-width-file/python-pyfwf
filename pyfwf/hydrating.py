@@ -28,6 +28,31 @@ __all__ = ["hydrate_object", "dehydrate_object", "Hydrator"]
 import importlib
 from typing import Dict, List
 
+CLASS_NAME_MAPPING = {
+    "com.kelsoncm.fwf.columns.CharColumn": "pyfwf.columns.CharColumn",
+    "com.kelsoncm.fwf.columns.RightCharColumn": "pyfwf.columns.RightCharColumn",
+    "com.kelsoncm.fwf.columns.PositiveIntegerColumn": "pyfwf.columns.PositiveIntegerColumn",
+    "com.kelsoncm.fwf.columns.PositiveDecimalColumn": "pyfwf.columns.PositiveDecimalColumn",
+    "com.kelsoncm.fwf.columns.DateTimeColumn": "pyfwf.columns.DateTimeColumn",
+    "com.kelsoncm.fwf.columns.DateColumn": "pyfwf.columns.DateColumn",
+    "com.kelsoncm.fwf.columns.TimeColumn": "pyfwf.columns.TimeColumn",
+    "com.kelsoncm.fwf.descriptors.HeaderRowDescriptor": "pyfwf.descriptors.HeaderRowDescriptor",
+    "com.kelsoncm.fwf.descriptors.DetailRowDescriptor": "pyfwf.descriptors.DetailRowDescriptor",
+    "com.kelsoncm.fwf.descriptors.FooterRowDescriptor": "pyfwf.descriptors.FooterRowDescriptor",
+    "com.kelsoncm.fwf.descriptors.FileDescriptor": "pyfwf.descriptors.FileDescriptor",
+    "io.github.kelsoncm.fwf.columns.CharColumn": "pyfwf.columns.CharColumn",
+    "io.github.kelsoncm.fwf.columns.RightCharColumn": "pyfwf.columns.RightCharColumn",
+    "io.github.kelsoncm.fwf.columns.PositiveIntegerColumn": "pyfwf.columns.PositiveIntegerColumn",
+    "io.github.kelsoncm.fwf.columns.PositiveDecimalColumn": "pyfwf.columns.PositiveDecimalColumn",
+    "io.github.kelsoncm.fwf.columns.DateTimeColumn": "pyfwf.columns.DateTimeColumn",
+    "io.github.kelsoncm.fwf.columns.DateColumn": "pyfwf.columns.DateColumn",
+    "io.github.kelsoncm.fwf.columns.TimeColumn": "pyfwf.columns.TimeColumn",
+    "io.github.kelsoncm.fwf.descriptors.HeaderRowDescriptor": "pyfwf.descriptors.HeaderRowDescriptor",
+    "io.github.kelsoncm.fwf.descriptors.DetailRowDescriptor": "pyfwf.descriptors.DetailRowDescriptor",
+    "io.github.kelsoncm.fwf.descriptors.FooterRowDescriptor": "pyfwf.descriptors.FooterRowDescriptor",
+    "io.github.kelsoncm.fwf.descriptors.FileDescriptor": "pyfwf.descriptors.FileDescriptor",
+}
+
 
 def get_full_class_name(instance_or_class):
     if isinstance(instance_or_class, type):
@@ -37,6 +62,7 @@ def get_full_class_name(instance_or_class):
 
 
 def create_class(full_class_name, *args, **kwargs):
+    full_class_name = CLASS_NAME_MAPPING.get(full_class_name, full_class_name)
     module_name, class_name = full_class_name.rsplit(".", 1)
     MyClass = getattr(importlib.import_module(module_name), class_name)
     return MyClass(*args, **kwargs)
