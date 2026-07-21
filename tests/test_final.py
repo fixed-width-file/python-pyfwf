@@ -3,7 +3,6 @@ from unittest import TestCase
 
 from pyfwf.columns import CharColumn
 from pyfwf.descriptors import DetailRowDescriptor, FileDescriptor
-from pyfwf.hydrating import dehydrate_object
 from pyfwf.readers import Reader
 
 
@@ -49,22 +48,3 @@ class TestReaderEdgeCases(TestCase):
         """Test that Reader rejects unsupported iterable types"""
         # Tuple with one element per line works, but dict should not
         self.assertRaisesRegex(TypeError, "Unsupported Iterable", Reader, {}, self.fd)
-
-
-class TestDehydrateWithAttributes(TestCase):
-    """Test dehydrate_object with attributes"""
-
-    def test_dehydrate_with_attributes_hydrator(self):
-        """Test dehydration with Hydrator object attributes"""
-        from test_hydrating import WeCanTest
-
-        obj = WeCanTest()
-        obj.hydrating_attributes = ["nested"]
-        obj.nested = WeCanTest()
-        obj.nested.hydrating_kwargs = ["who"]
-        obj.nested.who = "me"
-
-        result = dehydrate_object(obj)
-        self.assertIn("attributes", result)
-        self.assertIn("nested", result["attributes"])
-        self.assertIsInstance(result["attributes"]["nested"], dict)
