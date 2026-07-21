@@ -29,17 +29,6 @@ import importlib
 from typing import Dict, List
 
 CLASS_NAME_MAPPING = {
-    "com.kelsoncm.fwf.columns.CharColumn": "pyfwf.columns.CharColumn",
-    "com.kelsoncm.fwf.columns.RightCharColumn": "pyfwf.columns.RightCharColumn",
-    "com.kelsoncm.fwf.columns.PositiveIntegerColumn": "pyfwf.columns.PositiveIntegerColumn",
-    "com.kelsoncm.fwf.columns.PositiveDecimalColumn": "pyfwf.columns.PositiveDecimalColumn",
-    "com.kelsoncm.fwf.columns.DateTimeColumn": "pyfwf.columns.DateTimeColumn",
-    "com.kelsoncm.fwf.columns.DateColumn": "pyfwf.columns.DateColumn",
-    "com.kelsoncm.fwf.columns.TimeColumn": "pyfwf.columns.TimeColumn",
-    "com.kelsoncm.fwf.descriptors.HeaderRowDescriptor": "pyfwf.descriptors.HeaderRowDescriptor",
-    "com.kelsoncm.fwf.descriptors.DetailRowDescriptor": "pyfwf.descriptors.DetailRowDescriptor",
-    "com.kelsoncm.fwf.descriptors.FooterRowDescriptor": "pyfwf.descriptors.FooterRowDescriptor",
-    "com.kelsoncm.fwf.descriptors.FileDescriptor": "pyfwf.descriptors.FileDescriptor",
     "io.github.kelsoncm.fwf.columns.CharColumn": "pyfwf.columns.CharColumn",
     "io.github.kelsoncm.fwf.columns.RightCharColumn": "pyfwf.columns.RightCharColumn",
     "io.github.kelsoncm.fwf.columns.PositiveIntegerColumn": "pyfwf.columns.PositiveIntegerColumn",
