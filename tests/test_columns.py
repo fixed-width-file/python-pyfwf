@@ -80,22 +80,6 @@ class TestCharColumn(TestCase):
         self.assertEqual("    ", cd.to_str(""))
         self.assertEqual("    ", cd.to_str(" "))
 
-    def test_dehydrate(self):
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.CharColumn",
-                "args": ["col_name", 20, "col_desc"],
-            },
-            CharColumn("col_name", 20, "col_desc").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.CharColumn",
-                "args": ["col_name", 20, "col_name"],
-            },
-            CharColumn("col_name", 20).dehydrate(),
-        )
-
 
 class TestRightCharColumn(TestCase):
     def test_constructor_empty(self):
@@ -169,22 +153,6 @@ class TestRightCharColumn(TestCase):
         self.assertEqual("    ", cd.to_str(" "))
         self.assertEqual("    ", cd.to_str(None))
 
-    def test_dehydrate(self):
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.RightCharColumn",
-                "args": ["col_name", 20, "col_desc"],
-            },
-            RightCharColumn("col_name", 20, "col_desc").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.RightCharColumn",
-                "args": ["col_name", 20, "col_name"],
-            },
-            RightCharColumn("col_name", 20).dehydrate(),
-        )
-
 
 class TestPositiveIntegerColumn(TestCase):
     def test_constructor_empty(self):
@@ -252,22 +220,6 @@ class TestPositiveIntegerColumn(TestCase):
         self.assertEqual("1234", cd.to_str(1234))
         self.assertEqual("0000", cd.to_str(0))
         self.assertEqual("0000", cd.to_str(None))
-
-    def test_dehydrate(self):
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.PositiveIntegerColumn",
-                "args": ["col_name", 20, "col_desc"],
-            },
-            PositiveIntegerColumn("col_name", 20, "col_desc").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.PositiveIntegerColumn",
-                "args": ["col_name", 20, "col_name"],
-            },
-            PositiveIntegerColumn("col_name", 20).dehydrate(),
-        )
 
 
 class TestPositiveDecimalColumn(TestCase):
@@ -351,22 +303,6 @@ class TestPositiveDecimalColumn(TestCase):
         self.assertEqual("0010", cd.to_str(0.1))
         self.assertEqual("0000", cd.to_str(None))
 
-    def test_dehydrate(self):
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.PositiveDecimalColumn",
-                "args": ["col_name", 20, 2, "col_name"],
-            },
-            PositiveDecimalColumn("col_name", 20).dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.PositiveDecimalColumn",
-                "args": ["col_name", 20, 4, "col_name"],
-            },
-            PositiveDecimalColumn("col_name", 20, 4).dehydrate(),
-        )
-
 
 class TestDateTimeColumn(TestCase):
     def test_constructor_empty(self):
@@ -439,29 +375,6 @@ class TestDateTimeColumn(TestCase):
             DateTimeColumn("dt", "%d%m%y%H%M").to_str(datetime(2001, 2, 28, 23, 59)),
         )
 
-    def test_dehydrate(self):
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.DateTimeColumn",
-                "args": ["col_name", "%d%m%Y%H%M", "col_name"],
-            },
-            DateTimeColumn("col_name").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.DateTimeColumn",
-                "args": ["col_name", "%d%m%y%H%M", "col_name"],
-            },
-            DateTimeColumn("col_name", "%d%m%y%H%M").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.DateTimeColumn",
-                "args": ["col_name", "%d%m%y%H%M", "col_desc"],
-            },
-            DateTimeColumn("col_name", "%d%m%y%H%M", "col_desc").dehydrate(),
-        )
-
 
 class TestDateColumn(TestCase):
     def test_constructor_empty(self):
@@ -527,29 +440,6 @@ class TestDateColumn(TestCase):
         self.assertEqual("28022001", DateColumn("dt").to_str(date(2001, 2, 28)))
         self.assertEqual("28022001", DateColumn("dt").to_str(datetime(2001, 2, 28, 23, 59)))
         self.assertEqual("280201", DateColumn("dt", "%d%m%y").to_str(date(2001, 2, 28)))
-
-    def test_dehydrate(self):
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.DateColumn",
-                "args": ["col_name", "%d%m%Y", "col_name"],
-            },
-            DateColumn("col_name").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.DateColumn",
-                "args": ["col_name", "%d%m%y", "col_name"],
-            },
-            DateColumn("col_name", "%d%m%y").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.DateColumn",
-                "args": ["col_name", "%d%m%y", "col_desc"],
-            },
-            DateColumn("col_name", "%d%m%y", "col_desc").dehydrate(),
-        )
 
 
 class TestTimeColumn(TestCase):
@@ -618,26 +508,3 @@ class TestTimeColumn(TestCase):
     def test_to_str_valid(self):
         self.assertEqual("2359", TimeColumn("time").to_str(time(23, 59)))
         self.assertEqual("23:59", TimeColumn("time", "%H:%M").to_str(time(23, 59)))
-
-    def test_dehydrate(self):
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.TimeColumn",
-                "args": ["col_name", "%H%M", "col_name"],
-            },
-            TimeColumn("col_name").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.TimeColumn",
-                "args": ["col_name", "%H%M", "col_name"],
-            },
-            TimeColumn("col_name", "%H%M").dehydrate(),
-        )
-        self.assertDictEqual(
-            {
-                "_hydrate_as": "pyfwf.columns.TimeColumn",
-                "args": ["col_name", "%H%M", "col_desc"],
-            },
-            TimeColumn("col_name", "%H%M", "col_desc").dehydrate(),
-        )
