@@ -4,19 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyfwf"
-version = "1.0.4"
+version = "1.1.0"
 description = "Python library to manipulate fixed width file (FWF)"
 readme = "README.md"
 license = { file = "LICENSE.md" }
 authors = [{ name = "Kelson da Costa Medeiros", email = "kelsoncm@gmail.com" }]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
@@ -70,7 +69,7 @@ pythonpath = ["."]
 
 [tool.black]
 line-length = 120
-target-version = ["py310", "py311", "py312", "py313", "py314"]
+target-version = ["py311", "py312", "py313", "py314"]
 exclude = '''
     (\.fwf$|\.venv)
     '''
