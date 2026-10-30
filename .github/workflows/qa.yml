@@ -38,7 +38,7 @@ jobs:
           black . --check
 
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v24
+        uses: DavidAnson/markdownlint-cli2-action@v25
 
       - name: Lint reStructuredText (doc8)
         run: |
